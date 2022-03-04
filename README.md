@@ -61,6 +61,7 @@ Do not worry about:
 
 ## Documentation
 [Micro:Bit / MakeCode](https://makecode.microbit.org/docs)
+
 [Crickit](https://learn.adafruit.com/adafruit-crickit-creative-robotic-interactive-construction-kit/overview)
 
 ### Notes on MakeCode
