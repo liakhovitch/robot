@@ -11,6 +11,7 @@ The robot is based on a BBC Micro:Bit microcontroller dev board and an Adafruit 
 - A speaker
 - An infrared line following sensor
 - A lithium-ion battery pack
+
 ...And all of the onboard peripherals included on the Micro:Bit and Crickit.
 
 ## Reference images
@@ -26,14 +27,14 @@ The robot is based on a BBC Micro:Bit microcontroller dev board and an Adafruit 
 ![remote](/images/remote.jpg)
 
 ## Getting Started
-1. Charge the robot through the charging port on the power management board (see reference images). This is the *only* port that will chage the robot.
+1. Charge the robot through the charging port on the power management board (see reference images). This is the *only* port that will charge the robot.
 2. Open [MakeCode](https://makecode.microbit.org/#editor). Click the "install" button in Chrome, if desired.
 3. Start a new project.
 4. Click on advanced->extensions to import any desired peripheral libraries (see "Library peculiarities and peripheral APIs" section below).
-5. Write a program. The block-based language is somewhat self-explanatory for an experienced programmer.
-6. PLug in the Micro:Bit via USB and click "Download".
+5. Write a program. The block-based language is somewhat self explanatory for an experienced programmer.
+6. Plug in the Micro:Bit via USB and click "Download".
 7. On the first attempt to download, MakeCode will offer to pair the Micro:Bit via WebUSB. Follow the directions to pair the device.
-8. After pairing, MakeCode should be able to download programs directly to the Micro:Bit.
+8. After pairing, MakeCode should be able to flash(download) programs directly to the Micro:Bit. Flash your program.
 9. Insert the Micro:Bit into the robot, with the LED array facing towards the front.
 10. Turn on the robot via the toggle switch on top of the chassis. If the robot does not turn on, make sure the small power switch on the Crickit is also in the "on" position.
 
@@ -88,7 +89,7 @@ MakeCode has a few peculiarities:
 - The NeoPixel library is required.
 - The NeoPixel array is a 40-node, 8x5 array on pin 16.
 - Use the "Set (Strip) to (NeoPixel at pin (P16) with 40 LEDs as (RGB))" command to initialize the array.
-- Use the "(Strip) set matrix width (8)" to enable addressing LEDs by X/Y coordinates.
+- Use the "(Strip) set matrix width (8)" command to enable addressing LEDs by X/Y coordinates.
 
 **Rangefinder**
 - The Rangefinder library is required.
@@ -108,42 +109,62 @@ MakeCode has a few peculiarities:
 
 ### Robot doesn't go straight
 **Cause**
+
 This behavior is normal for DC motors.
+
 **Mitigation**
+
 - Adjust the motor trim potentiometers to weaken one motor. Note that this wastes energy, and will not completely fix the problem.
 - Use some method of closed-loop control. For instance, correct course using the Micro:Bit's compass, or follow a line.
 
 ### Servo angles are off
 The servo motors will set themselves to an angle equal to half of the requested angle.
+
 **Cause**
+
 This is normal. These servo motors have a 90° range, while the Crickit library assumes motors with a 180° range.
+
 **Mitigation**
+
 Double all servo angles in the program. For example - to turn the servo to 45°, request a 90° angle.
 
 ### Rangefiner reports ~120mm distance when actual distance is >2000mm
 **Cause**
+
 This is a bug in the rangefinder library.
+
 **Mitigation**
+
 Add code to check for a reported distance under 140mm and replace it with a large value. This does make the rangefiner blind to anything right next to it.
 
 ### Crickit analog inputs do not work while rangefinder is initialized
 **Cause**
+
 This is a bug in the rangefinder library.
+
 **Mitigation**
+
 Use the Micro:Bit's onboard analog pins instead, or avoid simultaneously using the rangefinder with the Crickit signal pins.
 
 ### Speaker makes constant noise, or is not loud enough
 **Mitigation**
+
 Adjust the amplifier gain potentiometer on the Crickit board. A high value will cause the speaker to produce constant noise; this is normal.
 
-### The front caster wheel leaves the ground when the robot accelerates.
+### The front caster wheel leaves the ground when the robot accelerates
 **Cause**
+
 The robot is quite rear-heavy.
+
 **Mitigation**
+
 Accelerate the robot more slowly, add weight to the front, or add a rear caster wheel.
 
 ### Why is there hot glue on the wheels!?!
 **Cause**
+
 This is necessary to lock the bolt in place. If the bolt is tightened, the wheels push against the chassis and cause friction. If the bolt is missing, the wheels can fall off. The hot glue is not a load-bearing element.
+
 **Solution**
+
 Just leave it alone.
