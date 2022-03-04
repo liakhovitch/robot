@@ -1,5 +1,5 @@
 # Robot
-Documentation for the robot I made for my siblings
+Documentation for the robot I made for my siblings.
 
 ## What is this?
 In early 2022, I made a robot to help my siblings learn programming.
@@ -15,15 +15,15 @@ The robot is based on a BBC Micro:Bit microcontroller dev board and an Adafruit 
 
 ## Reference images
 ### Front
-![front]/images/front.png
+![front](/images/front.png)
 ### Back
-![back]/images/back.jpg
+![back](/images/back.jpg)
 ### Bottom
-![bottom]/images/bottom.jpg
+![bottom](/images/bottom.jpg)
 ### Crickit
-![crickit]/images/crickit.png
+![crickit](/images/crickit.png)
 ### Remote
-![remote]/images/remote.jpg
+![remote](/images/remote.jpg)
 
 ## Getting Started
 1. Charge the robot through the charging port on the power management board (see reference images). This is the *only* port that will chage the robot.
